@@ -7,9 +7,11 @@ import { flowers, occasions, themes, closings, suggestFlowers } from '@/lib/flow
 import { vases } from '@/lib/vases';
 import { encodeBouquet } from '@/lib/encoding';
 import { saveBouquetToGarden } from '@/lib/storage';
+import { toPng } from 'html-to-image';
 import FlowerSVG from '@/components/FlowerSVG';
 import VaseSVG from '@/components/VaseSVG';
 import BouquetRenderer from '@/components/BouquetRenderer';
+import ErrorBoundary from '@/components/ErrorBoundary';
 
 const TOTAL_STEPS = 6;
 
@@ -144,57 +146,18 @@ function BuildContent() {
     if (!el) return;
 
     try {
-      const canvas = document.createElement('canvas');
-      const scale = 2;
-      canvas.width = el.offsetWidth * scale;
-      canvas.height = el.offsetHeight * scale;
-      const ctx = canvas.getContext('2d');
-
-      // Draw background
-      const themeData = themes.find(t => t.id === theme) || themes[0];
-      ctx.fillStyle = themeData.bg;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      // Convert SVG to image
-      const svgElements = el.querySelectorAll('svg');
-      const data = new XMLSerializer().serializeToString(el);
-      const blob = new Blob([data], { type: 'image/svg+xml;charset=utf-8' });
-      const url = URL.createObjectURL(blob);
-
-      // Simple text-based download as fallback
+      const dataUrl = await toPng(el, {
+        quality: 0.95,
+        pixelRatio: 2,
+        backgroundColor: (themes.find(t => t.id === theme) || themes[0]).bg,
+      });
       const link = document.createElement('a');
       link.download = `bouquet-for-${card.recipientName || 'you'}.png`;
-
-      // Use html approach
-      const svgData = `
-        <svg xmlns="http://www.w3.org/2000/svg" width="${canvas.width}" height="${canvas.height}">
-          <foreignObject width="100%" height="100%">
-            <div xmlns="http://www.w3.org/1999/xhtml" style="font-family:sans-serif;text-align:center;padding:40px;background:${themeData.bg}">
-              <h2 style="font-family:cursive;font-size:24px">💐 Digital Bouquet</h2>
-              <p>For: ${card.recipientName || 'You'}</p>
-              <p style="margin:20px;font-style:italic">${card.message}</p>
-              <p>${card.closing} ${card.senderName}</p>
-            </div>
-          </foreignObject>
-        </svg>`;
-
-      const svgBlob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
-      const svgUrl = URL.createObjectURL(svgBlob);
-
-      const img = new Image();
-      img.onload = () => {
-        ctx.drawImage(img, 0, 0);
-        canvas.toBlob((blob) => {
-          if (blob) {
-            link.href = URL.createObjectURL(blob);
-            link.click();
-          }
-        });
-        URL.revokeObjectURL(svgUrl);
-      };
-      img.src = svgUrl;
+      link.href = dataUrl;
+      link.click();
     } catch (e) {
       console.error('Download failed:', e);
+      alert('Download failed. Please try taking a screenshot instead.');
     }
   };
 
@@ -218,10 +181,13 @@ function BuildContent() {
         <div className="flex items-center justify-center">
           {Array.from({ length: TOTAL_STEPS }, (_, i) => (
             <div key={i} className="flex items-center">
-              <div
+              <button
                 className={`step-dot ${
                   i + 1 === step ? 'active' : i + 1 < step ? 'completed' : 'pending'
-                }`}
+                } ${i + 1 < step ? 'cursor-pointer hover:scale-150' : 'cursor-default'}`}
+                onClick={() => { if (i + 1 < step) setStep(i + 1); }}
+                aria-label={`Step ${i + 1}${i + 1 < step ? ' (completed, click to go back)' : i + 1 === step ? ' (current)' : ''}`}
+                disabled={i + 1 > step}
               />
               {i < TOTAL_STEPS - 1 && (
                 <div className={`step-line w-8 ${i + 1 < step ? 'completed' : 'pending'}`} />
@@ -244,6 +210,26 @@ function BuildContent() {
               Select 3 to 10 flowers for your bouquet ({selectedFlowers.length}/10)
             </p>
 
+            {/* Progress indicator for minimum flowers */}
+            <div className="max-w-xs mx-auto mb-6">
+              <div className="flex items-center gap-2">
+                <div className="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
+                  <div
+                    className="h-full rounded-full transition-all duration-500 ease-out"
+                    style={{
+                      width: `${Math.min((selectedFlowers.length / 3) * 100, 100)}%`,
+                      backgroundColor: selectedFlowers.length >= 3 ? '#4a7c59' : '#e84057',
+                    }}
+                  />
+                </div>
+                <span className={`text-xs font-medium ${
+                  selectedFlowers.length >= 3 ? 'text-bloom-leaf' : 'text-bloom-rose'
+                }`}>
+                  {selectedFlowers.length >= 3 ? '✓ Ready!' : `${selectedFlowers.length}/3 min`}
+                </span>
+              </div>
+            </div>
+
             {/* Suggestion bar */}
             {suggestion && suggestion.length > 0 && (
               <div className="mb-6 p-4 bg-bloom-rose/5 rounded-xl text-center">
@@ -265,6 +251,16 @@ function BuildContent() {
                     </button>
                   ))}
                 </div>
+                {/* Quick-add all suggestions */}
+                <button
+                  onClick={() => {
+                    const toAdd = suggestion.filter(f => !selectedFlowers.includes(f.id)).map(f => f.id);
+                    setSelectedFlowers(prev => [...prev, ...toAdd].slice(0, 10));
+                  }}
+                  className="mt-3 text-xs px-4 py-1.5 bg-bloom-rose text-white rounded-full hover:bg-bloom-rose/90 transition-colors"
+                >
+                  ✨ USE ALL SUGGESTIONS
+                </button>
               </div>
             )}
 
@@ -272,8 +268,13 @@ function BuildContent() {
               {flowers.map((flower) => (
                 <div
                   key={flower.id}
+                  role="button"
+                  tabIndex={0}
+                  aria-pressed={selectedFlowers.includes(flower.id)}
+                  aria-label={`${flower.name} — ${flower.meaning}`}
                   className={`flower-card group ${selectedFlowers.includes(flower.id) ? 'selected' : ''}`}
                   onClick={() => toggleFlower(flower.id)}
+                  onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleFlower(flower.id); } }}
                   onMouseEnter={() => setHoveredFlower(flower.id)}
                   onMouseLeave={() => setHoveredFlower(null)}
                 >
@@ -329,8 +330,13 @@ function BuildContent() {
               {vases.map((vase) => (
                 <div
                   key={vase.id}
+                  role="button"
+                  tabIndex={0}
+                  aria-pressed={selectedVase === vase.id}
+                  aria-label={`${vase.name} — ${vase.description}`}
                   className={`vase-card text-center ${selectedVase === vase.id ? 'selected' : ''}`}
                   onClick={() => setSelectedVase(vase.id)}
+                  onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setSelectedVase(vase.id); } }}
                 >
                   <div className="flex justify-center mb-3">
                     <VaseSVG vaseId={vase.id} size={120} />
@@ -721,15 +727,17 @@ function BuildContent() {
 
 export default function BuildPage() {
   return (
-    <Suspense fallback={
-      <div className="min-h-screen bg-cream flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin-slow inline-block mb-4">🌸</div>
-          <p className="font-display text-sm tracking-widest text-charcoal/50">LOADING...</p>
+    <ErrorBoundary fallbackMessage="Something went wrong while building your bouquet. Please try again.">
+      <Suspense fallback={
+        <div className="min-h-screen bg-cream flex items-center justify-center">
+          <div className="text-center">
+            <div className="animate-spin-slow inline-block mb-4">🌸</div>
+            <p className="font-display text-sm tracking-widest text-charcoal/50">LOADING...</p>
+          </div>
         </div>
-      </div>
-    }>
-      <BuildContent />
-    </Suspense>
+      }>
+        <BuildContent />
+      </Suspense>
+    </ErrorBoundary>
   );
 }

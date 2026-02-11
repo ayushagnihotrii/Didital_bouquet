@@ -1,7 +1,10 @@
 'use client';
 
+import { useId } from 'react';
+
 export default function FlowerSVG({ flowerId, size = 100, className = '' }) {
-  const uid = `${flowerId}-${Math.random().toString(36).slice(2, 8)}`;
+  const reactId = useId();
+  const uid = `${flowerId}-${reactId.replace(/:/g, '')}`;
 
   const flowerMap = {
     rose: <RoseSVG id={uid} size={size} />,

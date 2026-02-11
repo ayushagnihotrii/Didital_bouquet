@@ -1,22 +1,34 @@
 import './globals.css';
+import { Great_Vibes, Playfair_Display, Playfair_Display_SC, DM_Sans, Special_Elite } from 'next/font/google';
+
+const greatVibes = Great_Vibes({ weight: '400', subsets: ['latin'], display: 'swap', variable: '--font-script' });
+const playfairDisplay = Playfair_Display({ subsets: ['latin'], display: 'swap', variable: '--font-serif', weight: ['400', '600', '700'] });
+const playfairDisplaySC = Playfair_Display_SC({ subsets: ['latin'], display: 'swap', variable: '--font-display', weight: ['400', '700'] });
+const dmSans = DM_Sans({ subsets: ['latin'], display: 'swap', variable: '--font-body', weight: ['300', '400', '500', '600', '700'] });
+const specialElite = Special_Elite({ weight: '400', subsets: ['latin'], display: 'swap', variable: '--font-mono' });
 
 export const metadata = {
   title: 'Digibouquet — Beautiful Flowers Delivered Digitally',
   description: 'Build and send beautiful digital flower bouquets to anyone, anywhere. Pick your flowers, write a heartfelt card, and share the love.',
   keywords: 'digital bouquet, flowers, send flowers online, virtual flowers, digital gift',
+  metadataBase: new URL('https://digital-bouquet-henna.vercel.app'),
+  openGraph: {
+    title: 'Digibouquet — Beautiful Flowers Delivered Digitally',
+    description: 'Build and send beautiful digital flower bouquets to anyone, anywhere.',
+    type: 'website',
+    siteName: 'Digibouquet',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Digibouquet — Beautiful Flowers Delivered Digitally',
+    description: 'Build and send beautiful digital flower bouquets to anyone, anywhere.',
+  },
+  manifest: '/manifest.json',
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Playfair+Display+SC:wght@400;700&family=DM+Sans:wght@300;400;500;600;700&family=Special+Elite&display=swap"
-          rel="stylesheet"
-        />
-      </head>
+    <html lang="en" className={`${greatVibes.variable} ${playfairDisplay.variable} ${playfairDisplaySC.variable} ${dmSans.variable} ${specialElite.variable}`}>
       <body className="font-body bg-cream text-charcoal antialiased">
         {children}
       </body>

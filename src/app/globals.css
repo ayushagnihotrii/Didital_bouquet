@@ -16,6 +16,26 @@ body {
   overflow-x: hidden;
 }
 
+/* ========== Accessibility — Focus Ring ========== */
+:focus-visible {
+  outline: 2px solid #e84057;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Skip-to-content for screen readers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
 /* ========== Custom Scrollbar ========== */
 ::-webkit-scrollbar {
   width: 8px;
@@ -33,19 +53,19 @@ body {
 
 /* ========== Typography ========== */
 .font-script {
-  font-family: 'Great Vibes', cursive;
+  font-family: var(--font-script), cursive;
 }
 .font-display {
-  font-family: 'Playfair Display SC', serif;
+  font-family: var(--font-display), serif;
 }
 .font-serif {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-serif), serif;
 }
 .font-body {
-  font-family: 'DM Sans', sans-serif;
+  font-family: var(--font-body), sans-serif;
 }
 .font-mono {
-  font-family: 'Special Elite', monospace;
+  font-family: var(--font-mono), monospace;
 }
 
 /* ========== Flower Selection ========== */
@@ -81,7 +101,7 @@ body {
 /* ========== Card / Letter ========== */
 .letter-card {
   @apply bg-white p-6 md:p-8 shadow-md;
-  font-family: 'Special Elite', monospace;
+  font-family: var(--font-mono), monospace;
   border: 1px solid #e8e0d8;
   position: relative;
   line-height: 1.8;
@@ -102,7 +122,7 @@ body {
 }
 .letter-card textarea,
 .letter-card input {
-  font-family: 'Special Elite', monospace;
+  font-family: var(--font-mono), monospace;
   background: transparent;
   line-height: 1.8;
 }

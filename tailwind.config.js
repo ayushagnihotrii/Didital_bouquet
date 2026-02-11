@@ -8,11 +8,11 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        script: ['Great Vibes', 'cursive'],
-        display: ['Playfair Display SC', 'serif'],
-        serif: ['Playfair Display', 'serif'],
-        body: ['DM Sans', 'sans-serif'],
-        mono: ['Special Elite', 'monospace'],
+        script: ['var(--font-script)', 'cursive'],
+        display: ['var(--font-display)', 'serif'],
+        serif: ['var(--font-serif)', 'serif'],
+        body: ['var(--font-body)', 'sans-serif'],
+        mono: ['var(--font-mono)', 'monospace'],
       },
       colors: {
         cream: '#faf8f5',

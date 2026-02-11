@@ -205,16 +205,36 @@ export default function GardenPage() {
             })}
           </div>
         ) : (
-          <div className="text-center py-16">
-            <div className="text-6xl mb-6 animate-float">🌱</div>
-            <p className="text-charcoal/60 mb-8">
+          <div className="text-center py-16 max-w-md mx-auto">
+            <div className="relative mb-8">
+              {/* Decorative illustration */}
+              <div className="flex justify-center items-end gap-2">
+                <div className="text-4xl animate-sway" style={{ animationDelay: '0s' }}>🌱</div>
+                <div className="text-5xl animate-sway" style={{ animationDelay: '0.3s' }}>🌿</div>
+                <div className="text-6xl animate-float">🌷</div>
+                <div className="text-5xl animate-sway" style={{ animationDelay: '0.5s' }}>🌿</div>
+                <div className="text-4xl animate-sway" style={{ animationDelay: '0.7s' }}>🌱</div>
+              </div>
+              <div className="mt-2 w-32 h-0.5 bg-bloom-leaf/30 rounded-full mx-auto" />
+            </div>
+            <h2 className="font-serif text-xl mb-2">
               {filter === 'favorites'
-                ? 'No favorites yet. Heart a bouquet to save it!'
-                : 'No bouquets yet. Plant your first one!'}
+                ? 'No favorites yet'
+                : 'Your garden awaits'}
+            </h2>
+            <p className="text-charcoal/60 text-sm mb-8 max-w-xs mx-auto">
+              {filter === 'favorites'
+                ? 'Heart a bouquet to save it to your favorites collection.'
+                : 'Every great garden starts with a single bloom. Create your first bouquet and watch your garden grow!'}
             </p>
-            <Link href="/build" className="btn-primary">
-              BUILD A BOUQUET
-            </Link>
+            <div className="space-y-3">
+              <Link href="/build" className="btn-primary block mx-auto max-w-xs">
+                🌺 BUILD YOUR FIRST BOUQUET
+              </Link>
+              <Link href="/build?bw=true" className="btn-secondary block mx-auto max-w-xs">
+                TRY BLACK & WHITE
+              </Link>
+            </div>
           </div>
         )}
       </div>

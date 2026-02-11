@@ -8,6 +8,7 @@ import { flowers as flowerData, occasions, themes } from '@/lib/flowers';
 import { incrementViews, getViews, incrementAppreciations, getAppreciations, hasAppreciated, setAppreciated } from '@/lib/storage';
 import BouquetRenderer from '@/components/BouquetRenderer';
 import PetalAnimation from '@/components/PetalAnimation';
+import ErrorBoundary from '@/components/ErrorBoundary';
 
 function BouquetContent() {
   const searchParams = useSearchParams();
@@ -316,15 +317,17 @@ function BouquetContent() {
 
 export default function BouquetPage() {
   return (
-    <Suspense fallback={
-      <div className="min-h-screen bg-cream flex items-center justify-center">
-        <div className="text-center">
-          <div className="text-4xl animate-spin-slow mb-4">🌸</div>
-          <p className="font-display text-sm tracking-widest text-charcoal/50">LOADING BOUQUET...</p>
+    <ErrorBoundary fallbackMessage="This bouquet couldn't be opened. The link may be invalid or expired.">
+      <Suspense fallback={
+        <div className="min-h-screen bg-cream flex items-center justify-center">
+          <div className="text-center">
+            <div className="text-4xl animate-spin-slow mb-4">🌸</div>
+            <p className="font-display text-sm tracking-widest text-charcoal/50">LOADING BOUQUET...</p>
+          </div>
         </div>
-      </div>
-    }>
-      <BouquetContent />
-    </Suspense>
+      }>
+        <BouquetContent />
+      </Suspense>
+    </ErrorBoundary>
   );
 }
