@@ -184,6 +184,19 @@ body {
   }
 }
 
+/* ========== Background Floating Flowers ========== */
+@keyframes bgFloat {
+  0%, 100% {
+    transform: translateY(0) rotate(var(--tw-rotate, 0deg));
+  }
+  33% {
+    transform: translateY(-10px) rotate(var(--tw-rotate, 0deg)) scale(1.03);
+  }
+  66% {
+    transform: translateY(6px) rotate(var(--tw-rotate, 0deg)) scale(0.97);
+  }
+}
+
 /* ========== Bloom Effect ========== */
 .bloom-container {
   opacity: 0;

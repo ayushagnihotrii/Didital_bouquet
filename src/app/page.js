@@ -4,8 +4,6 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import FlowerSVG from '@/components/FlowerSVG';
 
-const floatingFlowers = ['rose', 'sunflower', 'tulip', 'daisy', 'peony', 'lavender', 'orchid', 'anemone'];
-
 export default function HomePage() {
   const [mounted, setMounted] = useState(false);
 
@@ -15,22 +13,6 @@ export default function HomePage() {
 
   return (
     <main className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden px-4">
-      {/* Background floating flowers */}
-      {mounted && floatingFlowers.map((flower, i) => (
-        <div
-          key={flower}
-          className="absolute opacity-10 pointer-events-none"
-          style={{
-            left: `${10 + (i * 12) % 80}%`,
-            top: `${5 + (i * 17) % 85}%`,
-            animation: `float ${4 + i * 0.5}s ease-in-out ${i * 0.3}s infinite`,
-            transform: `rotate(${i * 45}deg)`,
-          }}
-        >
-          <FlowerSVG flowerId={flower} size={60 + i * 8} />
-        </div>
-      ))}
-
       {/* Main content */}
       <div className="relative z-10 text-center max-w-lg">
         {/* Animated hero flower */}
