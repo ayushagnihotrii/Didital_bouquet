@@ -517,30 +517,69 @@ function BuildContent() {
             </p>
 
             <div id="bouquet-capture" className="max-w-md mx-auto">
-              {/* Bouquet */}
-              <BouquetRenderer
-                selectedFlowerIds={selectedFlowers}
-                vaseId={selectedVase}
-                size={280}
-              />
+              {/* Bouquet with decorative background */}
+              <div className="relative bg-gradient-to-b from-transparent via-bloom-rose/[0.03] to-transparent rounded-3xl py-6">
+                {/* Soft radial glow behind bouquet */}
+                <div
+                  className="absolute left-1/2 -translate-x-1/2 rounded-full pointer-events-none"
+                  style={{
+                    top: '15%',
+                    width: 220,
+                    height: 220,
+                    background: 'radial-gradient(circle, rgba(244,160,181,0.1) 0%, transparent 70%)',
+                  }}
+                />
+                <BouquetRenderer
+                  selectedFlowerIds={selectedFlowers}
+                  vaseId={selectedVase}
+                  size={320}
+                />
+              </div>
 
-              {/* Card preview */}
-              <div className="letter-card max-w-sm mx-auto mt-4">
-                <div className="relative z-10">
-                  <p className="text-sm">Dear {card.recipientName || 'Friend'}</p>
-                  <p className="text-sm mt-2 whitespace-pre-wrap">{card.message}</p>
-                  <div className="text-right mt-4">
-                    <p className="text-sm">{card.closing}</p>
-                    <p className="text-sm">{card.senderName || 'Anonymous'}</p>
+              {/* Flower names ribbon */}
+              <div className="flex flex-wrap justify-center gap-1.5 mt-2 mb-6 px-4">
+                {selectedFlowers.map((fId, i) => {
+                  const f = flowers.find(fl => fl.id === fId);
+                  return f ? (
+                    <span
+                      key={`${fId}-${i}`}
+                      className="text-[10px] px-2.5 py-0.5 rounded-full border font-medium"
+                      style={{
+                        borderColor: `${f.color}40`,
+                        backgroundColor: `${f.color}10`,
+                        color: f.color === '#ffffff' || f.color === '#fff5ee' ? '#666' : f.color,
+                      }}
+                    >
+                      {f.name}
+                    </span>
+                  ) : null;
+                })}
+              </div>
+
+              {/* Card preview — elevated design */}
+              <div className="relative max-w-sm mx-auto">
+                {/* Decorative tape / wax seal */}
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10 w-8 h-8 rounded-full bg-bloom-rose/80 flex items-center justify-center shadow-sm">
+                  <span className="text-white text-xs">💌</span>
+                </div>
+                <div className="letter-card rounded-xl shadow-lg border-bloom-rose/10">
+                  <div className="relative z-10 pt-2">
+                    <p className="text-sm text-charcoal/80">Dear {card.recipientName || 'Friend'},</p>
+                    <p className="text-sm mt-3 whitespace-pre-wrap leading-relaxed">{card.message}</p>
+                    <div className="text-right mt-6 space-y-0.5">
+                      <p className="text-sm italic text-charcoal/70">{card.closing}</p>
+                      <p className="text-sm font-medium">{card.senderName || 'Anonymous'}</p>
+                    </div>
                   </div>
                 </div>
               </div>
 
               {/* Occasion tag */}
               {occasion && (
-                <div className="text-center mt-4">
-                  <span className="inline-block px-4 py-1 bg-bloom-rose/10 text-bloom-rose rounded-full text-xs font-display tracking-wider">
-                    {occasions.find(o => o.id === occasion)?.emoji} {occasions.find(o => o.id === occasion)?.label}
+                <div className="text-center mt-5">
+                  <span className="inline-flex items-center gap-1.5 px-4 py-1.5 bg-bloom-rose/8 text-bloom-rose rounded-full text-xs font-display tracking-wider shadow-sm">
+                    <span>{occasions.find(o => o.id === occasion)?.emoji}</span>
+                    {occasions.find(o => o.id === occasion)?.label}
                   </span>
                 </div>
               )}
@@ -577,11 +616,11 @@ function BuildContent() {
             </p>
 
             {/* Mini bouquet preview */}
-            <div className="max-w-xs mx-auto mb-8">
+            <div className="max-w-sm mx-auto mb-8">
               <BouquetRenderer
                 selectedFlowerIds={selectedFlowers}
                 vaseId={selectedVase}
-                size={200}
+                size={240}
               />
             </div>
 

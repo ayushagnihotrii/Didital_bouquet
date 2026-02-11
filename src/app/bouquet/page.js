@@ -189,7 +189,7 @@ function BouquetContent() {
               selectedFlowerIds={bouquet.f || []}
               vaseId={bouquet.v || 'modern'}
               animated={phase === 'bloom'}
-              size={300}
+              size={340}
             />
           </div>
 

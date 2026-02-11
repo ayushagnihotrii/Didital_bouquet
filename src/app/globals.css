@@ -227,7 +227,7 @@ body {
 .bouquet-wrapper {
   position: relative;
   width: 340px;
-  height: 440px;
+  height: 408px;
 }
 .bouquet-flower {
   position: absolute;
@@ -274,7 +274,7 @@ body {
 @media (max-width: 640px) {
   .bouquet-wrapper {
     width: 280px;
-    height: 360px;
+    height: 336px;
   }
   .letter-card {
     padding: 1rem 1.25rem;
