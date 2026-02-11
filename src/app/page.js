@@ -58,15 +58,6 @@ export default function HomePage() {
             VIEW GARDEN
           </Link>
         </div>
-
-        {/* Footer credit */}
-        <p
-          className={`mt-16 text-xs text-charcoal/40 font-display tracking-widest transition-all duration-700 delay-1000 ${
-            mounted ? 'opacity-100' : 'opacity-0'
-          }`}
-        >
-          MADE WITH ❤️ FOR THOSE YOU LOVE
-        </p>
       </div>
     </main>
   );

@@ -37,7 +37,7 @@ export default function FloatingBackground() {
   if (!mounted) return null;
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden" aria-hidden="true">
+    <div className="fixed inset-0 pointer-events-none z-[5] overflow-hidden" aria-hidden="true">
       {backgroundFlowers.map((flower, i) => (
         <div
           key={`bg-${flower.id}-${i}`}
@@ -45,7 +45,7 @@ export default function FloatingBackground() {
           style={{
             left: `${flower.x}%`,
             top: `${flower.y}%`,
-            opacity: 0.07,
+            opacity: 0.09,
             transform: `rotate(${flower.rotate}deg)`,
             animation: `bgFloat ${flower.duration}s ease-in-out ${flower.delay}s infinite`,
           }}
