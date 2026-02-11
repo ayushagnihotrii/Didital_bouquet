@@ -50,7 +50,7 @@ export default function FloatingBackground() {
           style={{
             left: `${flower.x}%`,
             top: `${flower.y}%`,
-            opacity: 0.32,
+            opacity: 0.2,
             transform: `rotate(${flower.rotate}deg)`,
             animation: `bgFloat ${flower.duration}s ease-in-out ${flower.delay}s infinite`,
           }}
