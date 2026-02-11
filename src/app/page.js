@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import FlowerSVG from '@/components/FlowerSVG';
+import FloatingBackground from '@/components/FloatingBackground';
 
 export default function HomePage() {
   const [mounted, setMounted] = useState(false);
@@ -13,6 +14,7 @@ export default function HomePage() {
 
   return (
     <main className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden px-4">
+      <FloatingBackground />
       {/* Main content */}
       <div className="relative z-10 text-center max-w-lg">
         {/* Animated hero flower */}

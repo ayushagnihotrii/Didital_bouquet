@@ -1,6 +1,5 @@
 import './globals.css';
 import { Great_Vibes, Playfair_Display, Playfair_Display_SC, DM_Sans, Special_Elite } from 'next/font/google';
-import FloatingBackground from '@/components/FloatingBackground';
 import GlobalFooter from '@/components/GlobalFooter';
 
 const greatVibes = Great_Vibes({ weight: '400', subsets: ['latin'], display: 'swap', variable: '--font-script' });
@@ -32,7 +31,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${greatVibes.variable} ${playfairDisplay.variable} ${playfairDisplaySC.variable} ${dmSans.variable} ${specialElite.variable}`}>
       <body className="font-body bg-cream text-charcoal antialiased">
-        <FloatingBackground />
         {children}
         <GlobalFooter />
       </body>
