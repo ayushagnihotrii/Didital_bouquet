@@ -55,140 +55,84 @@ function WatercolorDefs({ id }) {
    ROSE — Clean, elegant top-down rose with smooth rounded petals
    ════════════════════════════════════════════ */
 function RoseSVG({ id, size }) {
-  const outerAngles = [-95, -55, -18, 18, 55, 92, 132, 172, 214, 255, 296, 336];
-  const middleAngles = [-78, -36, 5, 46, 88, 130, 172, 214, 256, 298, 338];
-  const outerPalette = ['#b71c1c', '#c62828', '#d32f2f', '#ad1d24', '#e53935'];
-  const middlePalette = ['#ef5350', '#e53935', '#d32f2f', '#f0625d'];
-
   return (
     <svg viewBox="0 0 120 120" width={size} height={size}>
       <WatercolorDefs id={id} />
-      {/* Soft watercolor wash behind blossom */}
-      <ellipse cx="60" cy="50" rx="42" ry="36" fill="#c62828" opacity="0.2" filter={`url(#wash-${id})`} />
-      <ellipse cx="52" cy="58" rx="30" ry="24" fill="#ef5350" opacity="0.12" filter={`url(#wash-sm-${id})`} />
+      {/* Soft watercolor wash behind */}
+      <circle cx="60" cy="52" r="40" fill="#c62828" opacity="0.18" filter={`url(#wash-${id})`} />
 
       <g filter={`url(#wc-${id})`}>
-        {/* Base blossom fill to keep the rose visually complete at small sizes */}
-        <ellipse cx="60" cy="52" rx="33" ry="29" fill="#b71c1c" fillOpacity="0.34" />
+        {/* ── Outer petals: 5 large smooth rounded petals ── */}
+        {/* Petal 1 — top */}
+        <path d="M60 16 C40 16, 22 32, 24 52 C26 58, 34 58, 40 52 C46 42, 52 28, 60 22 C56 18, 60 16, 60 16"
+          fill="#c62828" fillOpacity="0.65" stroke="#2a2a2a" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+        {/* Petal 2 — top right */}
+        <path d="M78 22 C92 28, 100 46, 94 62 C92 68, 84 66, 80 58 C74 48, 70 36, 68 28 C72 22, 78 22, 78 22"
+          fill="#b71c1c" fillOpacity="0.6" stroke="#2a2a2a" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+        {/* Petal 3 — bottom right */}
+        <path d="M92 64 C94 80, 84 92, 68 90 C62 88, 62 82, 68 78 C76 72, 86 68, 90 66 C92 64, 92 64, 92 64"
+          fill="#d32f2f" fillOpacity="0.58" stroke="#2a2a2a" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+        {/* Petal 4 — bottom left */}
+        <path d="M52 90 C36 92, 22 82, 22 66 C22 60, 28 58, 34 62 C42 68, 48 78, 50 86 C50 90, 52 90, 52 90"
+          fill="#c62828" fillOpacity="0.6" stroke="#2a2a2a" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+        {/* Petal 5 — left */}
+        <path d="M26 44 C20 30, 30 18, 46 18 C52 18, 52 24, 48 30 C42 38, 32 44, 28 46 C26 46, 26 44, 26 44"
+          fill="#e53935" fillOpacity="0.55" stroke="#2a2a2a" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
 
-        {/* Outer petals */}
-        {outerAngles.map((angle, i) => {
-          const rad = (angle * Math.PI) / 180;
-          const bx1 = 60 + Math.cos(rad + 0.28) * 18;
-          const by1 = 52 + Math.sin(rad + 0.28) * 14;
-          const bx2 = 60 + Math.cos(rad - 0.28) * 18;
-          const by2 = 52 + Math.sin(rad - 0.28) * 14;
-          const tx = 60 + Math.cos(rad) * 40;
-          const ty = 52 + Math.sin(rad) * 32;
-          const cx1 = 60 + Math.cos(rad + 0.11) * 30;
-          const cy1 = 52 + Math.sin(rad + 0.11) * 24;
-          const cx2 = 60 + Math.cos(rad - 0.11) * 30;
-          const cy2 = 52 + Math.sin(rad - 0.11) * 24;
-          return (
-            <path
-              key={`ro-${i}`}
-              d={`M${bx1},${by1} Q${cx1},${cy1} ${tx},${ty} Q${cx2},${cy2} ${bx2},${by2} Z`}
-              fill={outerPalette[i % outerPalette.length]}
-              fillOpacity={i % 2 === 0 ? '0.66' : '0.6'}
-              stroke="#2a2a2a"
-              strokeWidth="1.6"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          );
-        })}
+        {/* ── Middle petals: 5 medium C-shaped petals ── */}
+        {/* Mid petal 1 */}
+        <path d="M56 26 C42 28, 32 40, 34 54 C36 58, 42 56, 46 50 C50 42, 54 34, 56 28 Z"
+          fill="#e53935" fillOpacity="0.6" stroke="#2a2a2a" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+        {/* Mid petal 2 */}
+        <path d="M76 30 C86 38, 88 54, 80 64 C76 68, 72 64, 72 58 C72 50, 74 40, 76 34 Z"
+          fill="#d32f2f" fillOpacity="0.58" stroke="#2a2a2a" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+        {/* Mid petal 3 */}
+        <path d="M84 68 C82 80, 72 86, 62 82 C58 80, 60 76, 64 72 C70 68, 78 66, 82 66 Z"
+          fill="#c62828" fillOpacity="0.6" stroke="#2a2a2a" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+        {/* Mid petal 4 */}
+        <path d="M48 84 C38 80, 30 70, 34 58 C36 54, 40 56, 42 62 C46 70, 48 78, 48 82 Z"
+          fill="#ef5350" fillOpacity="0.55" stroke="#2a2a2a" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+        {/* Mid petal 5 */}
+        <path d="M34 42 C32 32, 40 24, 52 26 C56 28, 54 32, 48 36 C42 40, 36 42, 34 42"
+          fill="#e53935" fillOpacity="0.55" stroke="#2a2a2a" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
 
-        {/* Middle petals */}
-        {middleAngles.map((angle, i) => {
-          const rad = (angle * Math.PI) / 180;
-          const bx1 = 60 + Math.cos(rad + 0.34) * 12;
-          const by1 = 52 + Math.sin(rad + 0.34) * 10;
-          const bx2 = 60 + Math.cos(rad - 0.34) * 12;
-          const by2 = 52 + Math.sin(rad - 0.34) * 10;
-          const tx = 60 + Math.cos(rad) * 27;
-          const ty = 52 + Math.sin(rad) * 22;
-          const cx1 = 60 + Math.cos(rad + 0.14) * 20;
-          const cy1 = 52 + Math.sin(rad + 0.14) * 16;
-          const cx2 = 60 + Math.cos(rad - 0.14) * 20;
-          const cy2 = 52 + Math.sin(rad - 0.14) * 16;
-          return (
-            <path
-              key={`rm-${i}`}
-              d={`M${bx1},${by1} Q${cx1},${cy1} ${tx},${ty} Q${cx2},${cy2} ${bx2},${by2} Z`}
-              fill={middlePalette[i % middlePalette.length]}
-              fillOpacity={i % 3 === 0 ? '0.62' : '0.56'}
-              stroke="#2a2a2a"
-              strokeWidth="1.4"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          );
-        })}
+        {/* ── Inner petals: 4 small rounded petals ── */}
+        <path d="M54 34 C46 38, 40 48, 44 58 C46 62, 50 58, 52 52 C54 46, 54 38, 54 34"
+          fill="#ff5252" fillOpacity="0.6" stroke="#2a2a2a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M72 40 C78 48, 78 60, 70 66 C66 68, 66 64, 68 58 C70 52, 72 46, 72 40"
+          fill="#ef5350" fillOpacity="0.58" stroke="#2a2a2a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M66 72 C60 78, 48 76, 44 68 C42 64, 46 64, 50 66 C56 68, 62 70, 66 72"
+          fill="#e53935" fillOpacity="0.55" stroke="#2a2a2a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M40 56 C36 48, 40 38, 48 36 C52 34, 52 38, 48 44 C44 50, 40 54, 40 56"
+          fill="#ff8a80" fillOpacity="0.5" stroke="#2a2a2a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
 
-        {/* Inner curled petals */}
-        <path
-          d="M46 52 C46 43, 53 36, 61 37 C66 38, 67 42, 63 46 C58 49, 53 51, 50 56 C49 60, 47 58, 46 52 Z"
-          fill="#ff8a80"
-          fillOpacity="0.62"
-          stroke="#2a2a2a"
-          strokeWidth="1.35"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M72 47 C76 54, 75 63, 68 68 C64 70, 62 67, 64 62 C67 58, 70 53, 70 49 C70 46, 71 45, 72 47 Z"
-          fill="#ef5350"
-          fillOpacity="0.58"
-          stroke="#2a2a2a"
-          strokeWidth="1.35"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M60 70 C52 70, 45 64, 45 57 C45 53, 48 53, 52 56 C56 60, 60 63, 66 63 C70 63, 70 65, 67 67 C65 69, 62 70, 60 70 Z"
-          fill="#e53935"
-          fillOpacity="0.58"
-          stroke="#2a2a2a"
-          strokeWidth="1.3"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
+        {/* ── Innermost petals: 3 tiny curls ── */}
+        <path d="M54 42 C48 46, 46 54, 50 60 C52 62, 56 58, 56 52 C56 48, 56 44, 54 42"
+          fill="#ffcdd2" fillOpacity="0.6" stroke="#2a2a2a" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M68 46 C72 52, 72 60, 66 64 C62 66, 62 62, 64 56 C66 52, 68 48, 68 46"
+          fill="#ff8a80" fillOpacity="0.55" stroke="#2a2a2a" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M56 64 C52 62, 48 56, 50 50 C52 48, 54 50, 54 56 C54 60, 54 62, 56 64"
+          fill="#ef5350" fillOpacity="0.55" stroke="#2a2a2a" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
 
-        {/* Centre spiral */}
-        <path
-          d="M61 45 C53 46, 49 54, 53 61 C57 67, 67 68, 73 62 C78 57, 77 46, 67 43 C61 41, 56 44, 56 49 C56 52, 58 55, 62 55 C66 55, 68 52, 67 49"
-          fill="#9f111b"
-          fillOpacity="0.78"
-          stroke="#2a2a2a"
-          strokeWidth="1.7"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M60 51 C57 53, 57 57, 60 59 C63 61, 67 59, 67 55 C67 52, 65 50, 62 50 C61 50, 60 50, 60 51"
-          fill="#6b0911"
-          fillOpacity="0.76"
-          stroke="#2a2a2a"
-          strokeWidth="1.3"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path d="M60 54 C61 56, 63 56, 64 55" fill="none" stroke="#2a2a2a" strokeWidth="0.9" strokeLinecap="round" />
+        {/* ── Centre: classic tight spiral ── */}
+        <path d="M56 48 C52 50, 51 56, 55 60 C59 63, 66 61, 68 56 C70 51, 67 46, 62 45 C58 44, 55 46, 56 48"
+          fill="#b71c1c" fillOpacity="0.75" stroke="#2a2a2a" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M58 50 C56 52, 56 56, 59 58 C62 59, 65 57, 65 54 C65 51, 63 49, 60 49 C58 49, 57 50, 58 50"
+          fill="#8b0000" fillOpacity="0.7" stroke="#2a2a2a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M60 52 C59 53, 59 55, 60 56 C62 56, 63 55, 62 53 C62 52, 61 52, 60 52"
+          fill="#4a0000" fillOpacity="0.7" stroke="#2a2a2a" strokeWidth="1.3" strokeLinecap="round" />
+        {/* Tiny spiral accent */}
+        <path d="M60 53 C61 55, 62 54" fill="none" stroke="#2a2a2a" strokeWidth="1" strokeLinecap="round" />
       </g>
 
-      {/* Sepals below blossom */}
-      <path d="M49 82 C49 74, 54 70, 60 72 C57 77, 53 81, 49 82" fill="#2f6b35" fillOpacity="0.62" stroke="#2a2a2a" strokeWidth="1.1" strokeLinecap="round" />
-      <path d="M71 82 C71 74, 66 70, 60 72 C63 77, 67 81, 71 82" fill="#2f6b35" fillOpacity="0.62" stroke="#2a2a2a" strokeWidth="1.1" strokeLinecap="round" />
-      <path d="M59 85 C57 78, 60 73, 64 74 C64 79, 62 83, 59 85" fill="#3c7d3f" fillOpacity="0.58" stroke="#2a2a2a" strokeWidth="1" strokeLinecap="round" />
-
       {/* Stem */}
-      <path d="M60 84 C58 95, 59 109, 60 118" stroke="#2e7d32" strokeWidth="3.6" fill="none" strokeLinecap="round" />
-
+      <path d="M60 88 C58 96, 59 108, 60 118" stroke="#2e7d32" strokeWidth="3.5" fill="none" strokeLinecap="round" />
       {/* Leaves */}
-      <path d="M57 98 C43 92, 31 95, 34 106 C41 102, 50 100, 57 101" fill="#4a7c34" fillOpacity="0.6" stroke="#2a2a2a" strokeWidth="1.1" strokeLinecap="round" />
-      <path d="M63 104 C77 98, 88 101, 85 112 C78 108, 71 106, 63 107" fill="#3d6b2e" fillOpacity="0.56" stroke="#2a2a2a" strokeWidth="1.1" strokeLinecap="round" />
-      <path d="M57 98 C49 95, 41 98, 36 104" fill="none" stroke="#2a2a2a" strokeWidth="0.55" opacity="0.3" strokeLinecap="round" />
-      <path d="M63 104 C72 101, 80 104, 83 110" fill="none" stroke="#2a2a2a" strokeWidth="0.55" opacity="0.3" strokeLinecap="round" />
+      <path d="M57 100 C44 94, 32 96, 34 106 C40 102, 50 100, 57 102" fill="#4a7c34" fillOpacity="0.6" stroke="#2a2a2a" strokeWidth="1.1" strokeLinecap="round" />
+      <path d="M63 106 C76 100, 86 102, 84 112 C78 108, 70 106, 63 108" fill="#3d6b2e" fillOpacity="0.55" stroke="#2a2a2a" strokeWidth="1.1" strokeLinecap="round" />
+      {/* Leaf veins */}
+      <path d="M57 100 C48 96, 40 98, 36 104" fill="none" stroke="#2a2a2a" strokeWidth="0.5" opacity="0.3" strokeLinecap="round" />
+      <path d="M63 106 C72 102, 80 104, 82 110" fill="none" stroke="#2a2a2a" strokeWidth="0.5" opacity="0.3" strokeLinecap="round" />
     </svg>
   );
 }
