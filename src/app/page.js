@@ -24,9 +24,9 @@ export default function HomePage() {
 
         {/* Title */}
         <h1
-          className={`font-script text-6xl md:text-8xl mb-4 transition-all duration-700 delay-300 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          className={`font-script text-7xl md:text-9xl mb-4 transition-all duration-700 delay-300 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
-          style={{ color: '#fff', textShadow: '0 2px 20px rgba(140,40,70,0.5)' }}
+          style={{ color: '#fff', textShadow: '0 0 20px rgba(255,255,255,0.5), 0 0 40px rgba(255,180,200,0.4), 0 2px 10px rgba(140,40,70,0.6)' }}
         >
           Bloomshire
         </h1>

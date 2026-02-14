@@ -171,7 +171,7 @@ function BuildContent() {
     <div className="min-h-screen relative z-10" style={themeStyle}>
       {/* Header */}
       <header className="py-6 text-center border-b border-white/20" style={{ background: 'rgba(255,255,255,0.85)', backdropFilter: 'blur(10px)' }}>
-        <Link href="/" className="font-script text-3xl text-charcoal hover:text-bloom-rose transition-colors" style={{ color: '#4a1a2a' }}>
+        <Link href="/" className="font-script text-4xl hover:text-bloom-rose transition-colors" style={{ color: '#4a1a2a', textShadow: '0 0 15px rgba(255,255,255,0.6), 0 1px 6px rgba(140,40,70,0.3)' }}>
           Bloomshire
         </Link>
       </header>
