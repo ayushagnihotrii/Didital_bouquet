@@ -26,27 +26,24 @@ export default function HomePage() {
 
         {/* Title */}
         <h1
-          className={`font-script text-6xl md:text-8xl text-charcoal mb-4 transition-all duration-700 delay-300 ${
-            mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}
+          className={`font-script text-6xl md:text-8xl text-charcoal mb-4 transition-all duration-700 delay-300 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
         >
-          Digibouquet
+          Bloomshire
         </h1>
 
         {/* Tagline */}
         <p
-          className={`font-display text-sm md:text-base tracking-[0.25em] text-charcoal/70 mb-12 transition-all duration-700 delay-500 ${
-            mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}
+          className={`font-display text-sm md:text-base tracking-[0.25em] text-charcoal/70 mb-12 transition-all duration-700 delay-500 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
         >
           BEAUTIFUL FLOWERS<br />DELIVERED DIGITALLY
         </p>
 
         {/* CTA Buttons */}
         <div
-          className={`space-y-4 transition-all duration-700 delay-700 ${
-            mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}
+          className={`space-y-4 transition-all duration-700 delay-700 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
         >
           <Link href="/build" className="btn-primary block mx-auto max-w-xs text-center">
             BUILD A BOUQUET

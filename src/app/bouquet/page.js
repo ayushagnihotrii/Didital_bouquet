@@ -150,7 +150,7 @@ function BouquetContent() {
           className="font-script text-3xl transition-colors hover:opacity-70"
           style={{ color: themeData.text }}
         >
-          Digibouquet
+          Bloomshire
         </Link>
       </header>
 
@@ -250,11 +250,10 @@ function BouquetContent() {
                 <button
                   onClick={handleAppreciate}
                   disabled={appreciated}
-                  className={`flex items-center gap-2 px-6 py-3 rounded-full transition-all ${
-                    appreciated
+                  className={`flex items-center gap-2 px-6 py-3 rounded-full transition-all ${appreciated
                       ? 'bg-bloom-rose/20 text-bloom-rose cursor-default'
                       : 'bg-white shadow-sm hover:shadow-md hover:scale-105 active:scale-95'
-                  }`}
+                    }`}
                   style={!appreciated ? { color: themeData.accent } : undefined}
                 >
                   <span className={`text-xl ${appreciated ? 'animate-wiggle' : ''}`}>
@@ -304,9 +303,9 @@ function BouquetContent() {
             <span className="animate-pulse">🎵</span>
             <span className="text-xs text-charcoal/60">
               {bouquet.m === 'gentle' ? 'Gentle Piano' :
-               bouquet.m === 'cheerful' ? 'Cheerful Ukulele' :
-               bouquet.m === 'romantic' ? 'Romantic Strings' :
-               bouquet.m === 'nature' ? 'Nature Sounds' : ''}
+                bouquet.m === 'cheerful' ? 'Cheerful Ukulele' :
+                  bouquet.m === 'romantic' ? 'Romantic Strings' :
+                    bouquet.m === 'nature' ? 'Nature Sounds' : ''}
             </span>
           </div>
         </div>

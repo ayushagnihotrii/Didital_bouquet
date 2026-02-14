@@ -123,7 +123,7 @@ export default async function Image({ searchParams }) {
             textTransform: 'uppercase',
           }}
         >
-          Digibouquet
+          Bloomshire
         </div>
       </div>
     ),

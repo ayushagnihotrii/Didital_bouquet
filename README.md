@@ -5,7 +5,7 @@
   <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="License" />
 </p>
 
-<h1 align="center">💐 Digibouquet</h1>
+<h1 align="center">💐 Bloomshire</h1>
 
 <p align="center">
   <strong>Beautiful Flowers, Delivered Digitally.</strong><br/>
@@ -184,5 +184,5 @@ This project is licensed under the MIT License — see the [LICENSE](LICENSE) fi
 
 <p align="center">
   Made with ❤️ for those you love<br/>
-  <strong>Digibouquet</strong> — Because some flowers never wilt.
+  <strong>Bloomshire</strong> — Because some flowers never wilt.
 </p>

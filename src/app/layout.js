@@ -9,19 +9,19 @@ const dmSans = DM_Sans({ subsets: ['latin'], display: 'swap', variable: '--font-
 const specialElite = Special_Elite({ weight: '400', subsets: ['latin'], display: 'swap', variable: '--font-mono' });
 
 export const metadata = {
-  title: 'Digibouquet — Beautiful Flowers Delivered Digitally',
+  title: 'Bloomshire — Beautiful Flowers Delivered Digitally',
   description: 'Build and send beautiful digital flower bouquets to anyone, anywhere. Pick your flowers, write a heartfelt card, and share the love.',
   keywords: 'digital bouquet, flowers, send flowers online, virtual flowers, digital gift',
   metadataBase: new URL('https://digital-bouquet-henna.vercel.app'),
   openGraph: {
-    title: 'Digibouquet — Beautiful Flowers Delivered Digitally',
+    title: 'Bloomshire — Beautiful Flowers Delivered Digitally',
     description: 'Build and send beautiful digital flower bouquets to anyone, anywhere.',
     type: 'website',
-    siteName: 'Digibouquet',
+    siteName: 'Bloomshire',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Digibouquet — Beautiful Flowers Delivered Digitally',
+    title: 'Bloomshire — Beautiful Flowers Delivered Digitally',
     description: 'Build and send beautiful digital flower bouquets to anyone, anywhere.',
   },
   manifest: '/manifest.json',

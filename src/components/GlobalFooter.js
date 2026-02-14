@@ -22,7 +22,7 @@ export default function GlobalFooter() {
         </Link>
       </div>
       <p className="text-[10px] text-charcoal/20 mt-3 font-display tracking-wider">
-        DIGIBOUQUET © {new Date().getFullYear()}
+        BLOOMSHIRE © {new Date().getFullYear()}
       </p>
     </footer>
   );

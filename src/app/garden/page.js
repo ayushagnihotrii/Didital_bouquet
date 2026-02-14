@@ -53,7 +53,7 @@ export default function GardenPage() {
       {/* Header */}
       <header className="py-6 text-center border-b border-gray-100">
         <Link href="/" className="font-script text-3xl text-charcoal hover:text-bloom-rose transition-colors">
-          Digibouquet
+          Bloomshire
         </Link>
       </header>
 
@@ -70,21 +70,19 @@ export default function GardenPage() {
           <div className="flex justify-center gap-4 mb-8">
             <button
               onClick={() => setFilter('all')}
-              className={`font-display text-xs tracking-widest px-4 py-2 rounded-full transition-all ${
-                filter === 'all'
+              className={`font-display text-xs tracking-widest px-4 py-2 rounded-full transition-all ${filter === 'all'
                   ? 'bg-charcoal text-white'
                   : 'bg-white text-charcoal hover:bg-gray-100'
-              }`}
+                }`}
             >
               ALL ({garden.length})
             </button>
             <button
               onClick={() => setFilter('favorites')}
-              className={`font-display text-xs tracking-widest px-4 py-2 rounded-full transition-all ${
-                filter === 'favorites'
+              className={`font-display text-xs tracking-widest px-4 py-2 rounded-full transition-all ${filter === 'favorites'
                   ? 'bg-bloom-rose text-white'
                   : 'bg-white text-charcoal hover:bg-gray-100'
-              }`}
+                }`}
             >
               ❤️ FAVORITES ({garden.filter(b => favorites[b.id]).length})
             </button>

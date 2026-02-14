@@ -172,7 +172,7 @@ function BuildContent() {
       {/* Header */}
       <header className="py-6 text-center border-b border-gray-100">
         <Link href="/" className="font-script text-3xl text-charcoal hover:text-bloom-rose transition-colors">
-          Digibouquet
+          Bloomshire
         </Link>
       </header>
 
@@ -182,9 +182,8 @@ function BuildContent() {
           {Array.from({ length: TOTAL_STEPS }, (_, i) => (
             <div key={i} className="flex items-center">
               <button
-                className={`step-dot ${
-                  i + 1 === step ? 'active' : i + 1 < step ? 'completed' : 'pending'
-                } ${i + 1 < step ? 'cursor-pointer hover:scale-150' : 'cursor-default'}`}
+                className={`step-dot ${i + 1 === step ? 'active' : i + 1 < step ? 'completed' : 'pending'
+                  } ${i + 1 < step ? 'cursor-pointer hover:scale-150' : 'cursor-default'}`}
                 onClick={() => { if (i + 1 < step) setStep(i + 1); }}
                 aria-label={`Step ${i + 1}${i + 1 < step ? ' (completed, click to go back)' : i + 1 === step ? ' (current)' : ''}`}
                 disabled={i + 1 > step}
@@ -222,9 +221,8 @@ function BuildContent() {
                     }}
                   />
                 </div>
-                <span className={`text-xs font-medium ${
-                  selectedFlowers.length >= 3 ? 'text-bloom-leaf' : 'text-bloom-rose'
-                }`}>
+                <span className={`text-xs font-medium ${selectedFlowers.length >= 3 ? 'text-bloom-leaf' : 'text-bloom-rose'
+                  }`}>
                   {selectedFlowers.length >= 3 ? '✓ Ready!' : `${selectedFlowers.length}/3 min`}
                 </span>
               </div>
@@ -241,11 +239,10 @@ function BuildContent() {
                     <button
                       key={f.id}
                       onClick={() => toggleFlower(f.id)}
-                      className={`text-xs px-3 py-1 rounded-full border transition-all ${
-                        selectedFlowers.includes(f.id)
+                      className={`text-xs px-3 py-1 rounded-full border transition-all ${selectedFlowers.includes(f.id)
                           ? 'bg-bloom-rose text-white border-bloom-rose'
                           : 'border-bloom-rose/30 text-bloom-rose hover:bg-bloom-rose/10'
-                      }`}
+                        }`}
                     >
                       {f.name}
                     </button>
@@ -415,11 +412,10 @@ function BuildContent() {
                 {musicOptions.map((m) => (
                   <button
                     key={m.id}
-                    className={`p-3 rounded-xl text-left border-2 transition-all text-sm ${
-                      musicChoice === m.id
+                    className={`p-3 rounded-xl text-left border-2 transition-all text-sm ${musicChoice === m.id
                         ? 'border-bloom-rose bg-bloom-rose/5'
                         : 'border-gray-200 hover:border-gray-300'
-                    }`}
+                      }`}
                     onClick={() => setMusicChoice(m.id)}
                   >
                     <span className="font-medium">{m.name}</span>
