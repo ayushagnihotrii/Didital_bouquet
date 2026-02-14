@@ -1,6 +1,6 @@
 'use client';
 
-import PetalAnimation from './PetalAnimation';
+import InteractivePetals from './InteractivePetals';
 import CloverLeafAnimation from './CloverLeafAnimation';
 import HeartGlowEffect from './HeartGlowEffect';
 import ProposalSilhouette from './ProposalSilhouette';
@@ -24,8 +24,8 @@ export default function RomanticBackground() {
             {/* Shiny pulsing hearts */}
             <HeartGlowEffect />
 
-            {/* Falling rose petals */}
-            <PetalAnimation active={true} intensity="medium" />
+            {/* Interactive falling rose petals (mouse-reactive) */}
+            <InteractivePetals />
 
             {/* Falling clover leaves */}
             <CloverLeafAnimation />
