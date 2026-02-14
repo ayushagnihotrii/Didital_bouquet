@@ -13,17 +13,8 @@ export default function HomePage() {
 
   return (
     <main className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden px-4">
-      {/* Frosted glass hero card */}
-      <div
-        className={`relative z-10 text-center max-w-lg px-8 py-12 md:px-12 md:py-16 rounded-3xl transition-all duration-1000 ${mounted ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
-        style={{
-          background: 'rgba(255, 255, 255, 0.12)',
-          backdropFilter: 'blur(20px)',
-          WebkitBackdropFilter: 'blur(20px)',
-          border: '1px solid rgba(255, 255, 255, 0.25)',
-          boxShadow: '0 8px 32px rgba(140, 40, 70, 0.15), inset 0 1px 0 rgba(255,255,255,0.2)',
-        }}
-      >
+      {/* Main content */}
+      <div className="relative z-10 text-center max-w-lg">
         {/* Animated hero flower */}
         <div className={`mx-auto mb-6 transition-all duration-1000 ${mounted ? 'opacity-100 scale-100' : 'opacity-0 scale-50'}`}>
           <div className="animate-float">
