@@ -1,6 +1,7 @@
 import './globals.css';
 import { Great_Vibes, Playfair_Display, Playfair_Display_SC, DM_Sans, Special_Elite } from 'next/font/google';
 import GlobalFooter from '@/components/GlobalFooter';
+import RomanticBackground from '@/components/RomanticBackground';
 
 const greatVibes = Great_Vibes({ weight: '400', subsets: ['latin'], display: 'swap', variable: '--font-script' });
 const playfairDisplay = Playfair_Display({ subsets: ['latin'], display: 'swap', variable: '--font-serif', weight: ['400', '600', '700'] });
@@ -30,10 +31,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${greatVibes.variable} ${playfairDisplay.variable} ${playfairDisplaySC.variable} ${dmSans.variable} ${specialElite.variable}`}>
-      <body className="font-body bg-cream text-charcoal antialiased">
+      <body className="font-body text-charcoal antialiased" style={{ background: 'transparent' }}>
+        <RomanticBackground />
         {children}
         <GlobalFooter />
       </body>
     </html>
   );
 }
+

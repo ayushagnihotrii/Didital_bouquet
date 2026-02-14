@@ -3,8 +3,6 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import FlowerSVG from '@/components/FlowerSVG';
-import PetalAnimation from '@/components/PetalAnimation';
-import ProposalSilhouette from '@/components/ProposalSilhouette';
 
 export default function HomePage() {
   const [mounted, setMounted] = useState(false);
@@ -14,23 +12,7 @@ export default function HomePage() {
   }, []);
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden px-4 bg-romantic">
-      {/* Dark-pink radial gradient background */}
-      <div className="fixed inset-0 z-[1]" style={{
-        background: 'radial-gradient(ellipse at center, #f8c8d8 0%, #e8a0b8 35%, #d4768e 70%, #b85070 100%)',
-      }} />
-
-      {/* Soft vignette overlay */}
-      <div className="fixed inset-0 z-[1]" style={{
-        background: 'radial-gradient(ellipse at center, transparent 40%, rgba(140,40,70,0.3) 100%)',
-      }} />
-
-      {/* Romantic proposal silhouette */}
-      <ProposalSilhouette />
-
-      {/* Falling rose petals */}
-      <PetalAnimation active={true} intensity="heavy" />
-
+    <main className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden px-4">
       {/* Main content */}
       <div className="relative z-10 text-center max-w-lg">
         {/* Animated hero flower */}

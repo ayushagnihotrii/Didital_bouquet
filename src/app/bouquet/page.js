@@ -80,7 +80,7 @@ function BouquetContent() {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-cream flex items-center justify-center px-4">
+      <div className="min-h-screen flex items-center justify-center px-4 relative z-10">
         <div className="text-center">
           <p className="font-script text-4xl mb-4">🥀</p>
           <h1 className="font-display text-lg tracking-widest mb-2">BOUQUET NOT FOUND</h1>
@@ -95,7 +95,7 @@ function BouquetContent() {
 
   if (!bouquet) {
     return (
-      <div className="min-h-screen bg-cream flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center relative z-10">
         <div className="text-center">
           <div className="text-4xl animate-spin-slow mb-4">🌸</div>
           <p className="font-display text-sm tracking-widest text-charcoal/50">PREPARING YOUR BOUQUET...</p>
@@ -108,7 +108,7 @@ function BouquetContent() {
   if (phase === 'scheduled' && bouquet.s) {
     const scheduledDate = new Date(bouquet.s);
     return (
-      <div className="min-h-screen bg-cream flex items-center justify-center px-4">
+      <div className="min-h-screen flex items-center justify-center px-4 relative z-10">
         <div className="text-center max-w-md">
           <div className="text-6xl mb-6 animate-float">🌷</div>
           <h1 className="font-script text-4xl mb-4">A Bouquet is on its Way!</h1>
@@ -137,8 +137,7 @@ function BouquetContent() {
 
   return (
     <div
-      className="min-h-screen transition-colors duration-1000 relative"
-      style={{ backgroundColor: themeData.bg, color: themeData.text, ...themeStyle }}
+      className="min-h-screen transition-colors duration-1000 relative z-10"
     >
       {/* Petal animation */}
       <PetalAnimation active={showPetals} intensity="medium" />
@@ -251,8 +250,8 @@ function BouquetContent() {
                   onClick={handleAppreciate}
                   disabled={appreciated}
                   className={`flex items-center gap-2 px-6 py-3 rounded-full transition-all ${appreciated
-                      ? 'bg-bloom-rose/20 text-bloom-rose cursor-default'
-                      : 'bg-white shadow-sm hover:shadow-md hover:scale-105 active:scale-95'
+                    ? 'bg-bloom-rose/20 text-bloom-rose cursor-default'
+                    : 'bg-white shadow-sm hover:shadow-md hover:scale-105 active:scale-95'
                     }`}
                   style={!appreciated ? { color: themeData.accent } : undefined}
                 >
@@ -318,7 +317,7 @@ export default function BouquetPage() {
   return (
     <ErrorBoundary fallbackMessage="This bouquet couldn't be opened. The link may be invalid or expired.">
       <Suspense fallback={
-        <div className="min-h-screen bg-cream flex items-center justify-center">
+        <div className="min-h-screen flex items-center justify-center relative z-10">
           <div className="text-center">
             <div className="text-4xl animate-spin-slow mb-4">🌸</div>
             <p className="font-display text-sm tracking-widest text-charcoal/50">LOADING BOUQUET...</p>
