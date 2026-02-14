@@ -144,6 +144,51 @@ body {
   letter-spacing: 0.1em;
 }
 
+/* ========== Romantic Valentine Buttons ========== */
+.romantic-btn-primary {
+  @apply px-8 py-3 font-display text-sm tracking-widest;
+  @apply transition-all duration-300;
+  letter-spacing: 0.15em;
+  background: rgba(255, 255, 255, 0.95);
+  color: #b85070;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  border-radius: 50px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(140, 40, 70, 0.25);
+}
+.romantic-btn-primary:hover {
+  background: #fff;
+  color: #8b1a3a;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 30px rgba(140, 40, 70, 0.35);
+}
+
+.romantic-btn-secondary {
+  @apply px-8 py-3 font-display text-sm tracking-widest;
+  @apply transition-all duration-300;
+  letter-spacing: 0.15em;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50px;
+  backdrop-filter: blur(10px);
+}
+.romantic-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.8);
+  transform: translateY(-2px);
+}
+
+.romantic-btn-ghost {
+  @apply px-6 py-2 font-display text-sm tracking-widest underline underline-offset-4;
+  @apply transition-colors duration-300;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.8);
+}
+.romantic-btn-ghost:hover {
+  color: #fff;
+}
+
 /* ========== Petal Animation ========== */
 .petal {
   position: fixed;

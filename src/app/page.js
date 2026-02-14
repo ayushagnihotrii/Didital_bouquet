@@ -3,7 +3,8 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import FlowerSVG from '@/components/FlowerSVG';
-import FloatingBackground from '@/components/FloatingBackground';
+import PetalAnimation from '@/components/PetalAnimation';
+import ProposalSilhouette from '@/components/ProposalSilhouette';
 
 export default function HomePage() {
   const [mounted, setMounted] = useState(false);
@@ -13,8 +14,23 @@ export default function HomePage() {
   }, []);
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden px-4">
-      <FloatingBackground />
+    <main className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden px-4 bg-romantic">
+      {/* Dark-pink radial gradient background */}
+      <div className="fixed inset-0 z-[1]" style={{
+        background: 'radial-gradient(ellipse at center, #f8c8d8 0%, #e8a0b8 35%, #d4768e 70%, #b85070 100%)',
+      }} />
+
+      {/* Soft vignette overlay */}
+      <div className="fixed inset-0 z-[1]" style={{
+        background: 'radial-gradient(ellipse at center, transparent 40%, rgba(140,40,70,0.3) 100%)',
+      }} />
+
+      {/* Romantic proposal silhouette */}
+      <ProposalSilhouette />
+
+      {/* Falling rose petals */}
+      <PetalAnimation active={true} intensity="heavy" />
+
       {/* Main content */}
       <div className="relative z-10 text-center max-w-lg">
         {/* Animated hero flower */}
@@ -26,16 +42,18 @@ export default function HomePage() {
 
         {/* Title */}
         <h1
-          className={`font-script text-6xl md:text-8xl text-charcoal mb-4 transition-all duration-700 delay-300 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          className={`font-script text-6xl md:text-8xl mb-4 transition-all duration-700 delay-300 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
+          style={{ color: '#fff', textShadow: '0 2px 20px rgba(140,40,70,0.5)' }}
         >
           Bloomshire
         </h1>
 
         {/* Tagline */}
         <p
-          className={`font-display text-sm md:text-base tracking-[0.25em] text-charcoal/70 mb-12 transition-all duration-700 delay-500 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          className={`font-display text-sm md:text-base tracking-[0.25em] mb-12 transition-all duration-700 delay-500 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
+          style={{ color: 'rgba(255,255,255,0.85)' }}
         >
           BEAUTIFUL FLOWERS<br />DELIVERED DIGITALLY
         </p>
@@ -45,15 +63,15 @@ export default function HomePage() {
           className={`space-y-4 transition-all duration-700 delay-700 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
         >
-          <Link href="/build" className="btn-primary block mx-auto max-w-xs text-center">
+          <Link href="/build" className="romantic-btn-primary block mx-auto max-w-xs text-center">
             BUILD A BOUQUET
           </Link>
 
-          <Link href="/build?bw=true" className="btn-secondary block mx-auto max-w-xs text-center">
+          <Link href="/build?bw=true" className="romantic-btn-secondary block mx-auto max-w-xs text-center">
             BUILD IT IN BLACK AND WHITE
           </Link>
 
-          <Link href="/garden" className="btn-ghost block mx-auto">
+          <Link href="/garden" className="romantic-btn-ghost block mx-auto">
             VIEW GARDEN
           </Link>
         </div>

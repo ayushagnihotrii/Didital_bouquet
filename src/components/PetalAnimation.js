@@ -3,9 +3,9 @@
 import { useEffect, useState } from 'react';
 
 const petalColors = [
-  '#f4a0b5', '#e84057', '#ff8fa3', '#ffb3c1', '#b39ddb',
-  '#f48fb1', '#90caf9', '#ffd700', '#ff8a65', '#ce93d8',
-  '#ef9a9a', '#ffcc80', '#a5d6a7', '#80cbc4',
+  '#f4a0b5', '#e84057', '#ff8fa3', '#ffb3c1', '#f48fb1',
+  '#ef9a9a', '#e57373', '#d4618c', '#f06292', '#ec407a',
+  '#ff6b8a', '#ff9eb5', '#ffc1cc', '#e8899a',
 ];
 
 export default function PetalAnimation({ active = true, intensity = 'medium' }) {
