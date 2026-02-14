@@ -3,7 +3,7 @@
 import InteractivePetals from './InteractivePetals';
 import CloverLeafAnimation from './CloverLeafAnimation';
 import HeartGlowEffect from './HeartGlowEffect';
-import ProposalSilhouette from './ProposalSilhouette';
+
 
 export default function RomanticBackground() {
     return (
@@ -18,8 +18,7 @@ export default function RomanticBackground() {
                 background: 'radial-gradient(ellipse at center, transparent 40%, rgba(140,40,70,0.3) 100%)',
             }} />
 
-            {/* Proposal silhouette */}
-            <ProposalSilhouette />
+
 
             {/* Shiny pulsing hearts */}
             <HeartGlowEffect />
