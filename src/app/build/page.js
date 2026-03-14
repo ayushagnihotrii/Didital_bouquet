@@ -464,7 +464,7 @@ function BuildContent() {
                         value={card.message}
                         onChange={(e) => setCard({ ...card, message: e.target.value })}
                         className="w-full min-h-[120px] resize-none outline-none text-charcoal placeholder:text-charcoal/30 text-sm"
-                        maxLength={500}
+                        maxLength={2000}
                       />
 
                       <div className="text-right space-y-2">
@@ -490,7 +490,7 @@ function BuildContent() {
                       </div>
                     </div>
                   </div>
-                  <p className="text-right text-xs text-charcoal/30 mt-2">{card.message.length}/500</p>
+                  <p className="text-right text-xs text-charcoal/30 mt-2">{card.message.length}/2000</p>
                 </div>
 
                 {/* Right decorative flowers */}
